@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CleanJet - Pricing Page</title>
+  <link rel="stylesheet" href="contact.css">
+  <link rel="stylesheet" href="navbar.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <h1 class="navbar-brand">
+                    <img src="logo1.png" alt="CleanJet Logo" style="height: 100px;">
+                </h1>
+                <button class="navbar-toggle" aria-label="Toggle navigation">
+                    &#9776;
+                </button>
+                <ul class="navbar-nav">
+                    <li><a href="home.html" class="{{ request()->is('home') ? 'active' : '' }}">Home</a></li>
+                    <li><a href="pricing.html" class="{{ request()->is('pricing') ? 'active' : '' }}">Pricing</a></li>
+                    <li><a href="gallery.html" class="{{ request()->is('gallery') ? 'active' : '' }}">Gallery</a></li>
+                    <li><a href="testimonials.html" class="{{ request()->is('testimonials') ? 'active' : '' }}">Testimonials</a></li>
+                    <li><a href="booking.html" class="{{ request()->is('booking') ? 'active' : '' }}">Booking</a></li>
+                    <li><a href="contact.html" class="{{ request()->is('contact') ? 'active' : '' }}">Contact Us</a></li>
+                    <li><a href="about.html" class="{{ request()->is('about') ? 'active' : '' }}">About Us</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn {{ request()->is('carwash') || request()->is('detailing') || request()->is('waxing') ? 'active' : '' }}">Services</a>
+                        <div class="dropdown-content">
+                            <a href="carwash.html" class="{{ request()->is('carwash') ? 'active' : '' }}">Car Wash</a>
+                            <a href="detailing.html" class="{{ request()->is('detailing') ? 'active' : '' }}">Detailing</a>
+                            <a href="waxing.html" class="{{ request()->is('waxing') ? 'active' : '' }}">Waxing</a>
+                        </div>
+                    </li>
+                    <li><a href="faqs.html" class="{{ request()->is('faqs') ? 'active' : '' }}">FAQs</a></li>
+                    <li><a href="promotions.html" class="{{ request()->is('promotions') ? 'active' : '' }}">Promotions</a></li>
+                    <li><a href="maintenance.html" class="{{ request()->is('maintenance') ? 'active' : '' }}">Maintenance Tips</a></li>
+                    <li><a href="blogs.html" class="{{ request()->is('blogs') ? 'active' : '' }}">Blogs</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    
+
+  <main>
+    <section class="contact-info">
+      <h2>Contact Information</h2>
+      <p>If you have any questions or need more information, feel free to reach out to us!</p>
+      <div class="contact-details">
+        <div class="contact-item">
+          <h4>Our Location</h4>
+          <p>123 CleanJet Avenue, Tagum City, Davao del Norte</p>
+          <div class="map">
+            <iframe src="https://www.google.com/maps/embed?pb=..." width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+        <div class="contact-item">
+          <h4>Email Us</h4>
+          <p>info@cleanjet.com</p>
+        </div>
+        <div class="contact-item">
+          <h4>Call Us</h4>
+          <p>+63 999 123 4567</p>
+        </div>
+      </div>
+    </section>
+    
+   
+<section class="contact-form">
+  <h3>Get in Touch</h3>
+  <form id="contactForm">
+    <div class="form-group">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone">
+    </div>
+    <div class="form-group">
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+    </div>
+    <button type="submit" class="btn">Submit</button>
+  </form>
+</section>
+
+
+<div id="confirmationModal" class="modal">
+  <div class="modal-content">
+    <span id="closeModal" class="close">&times;</span>
+    <h2>Thank You for Contacting Us!</h2>
+    <p>Your details have been successfully submitted. We will confirm your appointment via email soon.</p>
+    <button id="closeModalBtn" class="btn">Close</button>
+  </div>
+</div>
+      
+      
+  
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 CleanJet | Designed by Ken E. Caupit</p>
+    </div>
+  </footer>
+
+  <script>
+    const toggleButton = document.querySelector('.navbar-toggle');
+    const navbarNav = document.querySelector('.navbar-nav');
+    
+    toggleButton.addEventListener('click', () => {
+      navbarNav.classList.toggle('active');
+    });
+  </script>
+  <script>
+    
+    const currentPage = window.location.pathname.split('/').pop();
+    
+   
+    const navLinks = document.querySelectorAll('.navbar-nav a');
+    
+    
+    navLinks.forEach(link => {
+      const linkPath = link.getAttribute('href').split('/').pop();
+      
+      if (linkPath === currentPage) {
+        link.classList.add('active');
+      }
+    });
+
+   
+  var modal = document.getElementById('confirmationModal');
+
+
+var form = document.getElementById('contactForm');
+
+
+var closeModalBtn = document.getElementById('closeModalBtn');
+var closeModalSpan = document.getElementById('closeModal');
+
+
+form.addEventListener('submit', function(event) {
+  event.preventDefault(); 
+  
+  
+  modal.style.display = 'block';
+});
+
+
+closeModalSpan.onclick = function() {
+  modal.style.display = 'none';
+}
+
+
+closeModalBtn.onclick = function() {
+  modal.style.display = 'none';
+}
+
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = 'none';
+  }
+}
+
+  </script>
+  
+</body>
+</html>

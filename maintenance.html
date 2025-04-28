@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CleanJet - Pricing Page</title>
+  <link rel="stylesheet" href="maintenance.css">
+  <link rel="stylesheet" href="navbar.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <h1 class="navbar-brand">
+                    <img src="logo1.png" alt="CleanJet Logo" style="height: 100px;">
+                </h1>
+                <button class="navbar-toggle" aria-label="Toggle navigation">
+                    &#9776;
+                </button>
+                <ul class="navbar-nav">
+                    <li><a href="home.html" class="{{ request()->is('home') ? 'active' : '' }}">Home</a></li>
+                    <li><a href="pricing.html" class="{{ request()->is('pricing') ? 'active' : '' }}">Pricing</a></li>
+                    <li><a href="gallery.html" class="{{ request()->is('gallery') ? 'active' : '' }}">Gallery</a></li>
+                    <li><a href="testimonials.html" class="{{ request()->is('testimonials') ? 'active' : '' }}">Testimonials</a></li>
+                    <li><a href="booking.html" class="{{ request()->is('booking') ? 'active' : '' }}">Booking</a></li>
+                    <li><a href="contact.html" class="{{ request()->is('contact') ? 'active' : '' }}">Contact Us</a></li>
+                    <li><a href="about.html" class="{{ request()->is('about') ? 'active' : '' }}">About Us</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn {{ request()->is('carwash') || request()->is('detailing') || request()->is('waxing') ? 'active' : '' }}">Services</a>
+                        <div class="dropdown-content">
+                            <a href="carwash.html" class="{{ request()->is('carwash') ? 'active' : '' }}">Car Wash</a>
+                            <a href="detailing.html" class="{{ request()->is('detailing') ? 'active' : '' }}">Detailing</a>
+                            <a href="waxing.html" class="{{ request()->is('waxing') ? 'active' : '' }}">Waxing</a>
+                        </div>
+                    </li>
+                    <li><a href="faqs.html" class="{{ request()->is('faqs') ? 'active' : '' }}">FAQs</a></li>
+                    <li><a href="promotions.html" class="{{ request()->is('promotions') ? 'active' : '' }}">Promotions</a></li>
+                    <li><a href="maintenance.html" class="{{ request()->is('maintenance') ? 'active' : '' }}">Maintenance Tips</a></li>
+                    <li><a href="blogs.html" class="{{ request()->is('blogs') ? 'active' : '' }}">Blogs</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    
+
+  <main>
+    <section class="maintenance-tips">
+      <div class="container">
+          <h2>Maintenance Tips</h2>
+          <p>Essential maintenance tips to keep your vehicle running smoothly!</p>
+  
+          
+          <div class="tip-category">
+              <h3>Car Maintenance Tips</h3>
+              <ul>
+                  <li>Regularly check the oil level and change it every 3,000 to 5,000 miles.</li>
+                  <li>Inspect your tires monthly for wear and tear, and keep them properly inflated.</li>
+                  <li>Replace the air filter at regular intervals to improve engine performance and fuel economy.</li>
+                  <li>Maintain your brakes to ensure safety and optimal stopping performance.</li>
+                  <li>Check and top off your coolant to prevent engine overheating.</li>
+              </ul>
+          </div>
+  
+          
+          <div class="tip-category">
+              <h3>Motorcycle Maintenance Tips</h3>
+              <ul>
+                  <li>Change engine oil regularly (every 2,000 to 3,000 miles for most motorcycles).</li>
+                  <li>Ensure your tires are correctly inflated and free from visible damage.</li>
+                  <li>Clean and lube the chain every 500 miles or as needed.</li>
+                  <li>Check the brake fluid levels and ensure the brakes are functioning correctly.</li>
+                  <li>Inspect the battery and clean terminals to prevent corrosion.</li>
+              </ul>
+          </div>
+  
+          
+          <div class="tip-category">
+              <h3>General Maintenance Tips</h3>
+              <ul>
+                  <li>Keep your vehicle clean inside and out to prevent wear and tear.</li>
+                  <li>Ensure the lights, wipers, and other accessories are working properly.</li>
+                  <li>Check your fluid levels (transmission, power steering, and brake fluids).</li>
+                  <li>Replace the spark plugs to maintain engine performance.</li>
+                  <li>Consult the owner's manual for specific maintenance schedules.</li>
+              </ul>
+          </div>
+      </div>
+  </section>
+  
+    
+    
+      
+      
+  
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 CleanJet | Designed by Ken E. Caupit</p>
+    </div>
+  </footer>
+
+  <script>
+    const toggleButton = document.querySelector('.navbar-toggle');
+    const navbarNav = document.querySelector('.navbar-nav');
+    
+    toggleButton.addEventListener('click', () => {
+      navbarNav.classList.toggle('active');
+    });
+  </script>
+  <script>
+    
+    const currentPage = window.location.pathname.split('/').pop();
+    
+    
+    const navLinks = document.querySelectorAll('.navbar-nav a');
+    
+    
+    navLinks.forEach(link => {
+      const linkPath = link.getAttribute('href').split('/').pop();
+      
+      if (linkPath === currentPage) {
+        link.classList.add('active');
+      }
+    });
+
+    function toggleAnswer(faqId) {
+  const answer = document.getElementById(`faq-answer-${faqId}`);
+  const isVisible = answer.style.display === "block";
+  
+  
+  const allAnswers = document.querySelectorAll('.faq-answer');
+  allAnswers.forEach(a => {
+    a.style.display = "none";
+  });
+
+  
+  if (!isVisible) {
+    answer.style.display = "block";
+  } else {
+    answer.style.display = "none";
+  }
+}
+
+
+  </script>
+  
+</body>
+</html>

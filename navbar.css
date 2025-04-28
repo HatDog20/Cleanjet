@@ -1,0 +1,159 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+h2, h3, h4 {
+    font-weight: bold;
+    text-align: center;
+}
+
+p {
+    text-align: center;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff5733;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: #e04e2e;
+}
+
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #007BFF; 
+    padding: 10px 100px;
+}
+
+.navbar-brand {
+    color: #fff;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.navbar-nav {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.navbar-nav li {
+    position: relative;
+}
+
+.navbar-nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+
+.navbar-nav a:hover,
+.navbar-nav .dropdown:hover > a {
+    background-color: #FF6A00; 
+    border-radius: 5px;
+}
+
+
+.navbar-nav a.active {
+    background-color: #FF6A00; 
+    border-radius: 5px;
+    color: white; 
+}
+
+
+.navbar-nav .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #007BFF;
+    min-width: 150px;
+    z-index: 1;
+}
+
+.navbar-nav .dropdown-content a {
+    display: block;
+    padding: 10px;
+    color: #fff;
+}
+
+.navbar-nav .dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+.navbar-nav .dropdown-content a:hover {
+    background-color: #FF6A00; 
+}
+
+
+.navbar-toggle {
+    display: none;
+    font-size: 24px;
+    color: #fff;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    margin-top: auto; 
+}
+
+footer p {
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+
+@media (max-width: 768px) {
+    .navbar-nav {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    .navbar-nav li {
+        margin: 5px 0;
+    }
+
+    .hero {
+        height: 50vh;
+    }
+
+    .hero h2 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .hero .btn {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+}

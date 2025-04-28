@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CleanJet - Pricing Page</title>
+  <link rel="stylesheet" href="gallery.css">
+  <link rel="stylesheet" href="navbar.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <h1 class="navbar-brand">
+                    <img src="logo1.png" alt="CleanJet Logo" style="height: 100px;">
+                </h1>
+                <button class="navbar-toggle" aria-label="Toggle navigation">
+                    &#9776;
+                </button>
+                <ul class="navbar-nav">
+                    <li><a href="home.html" class="{{ request()->is('home') ? 'active' : '' }}">Home</a></li>
+                    <li><a href="pricing.html" class="{{ request()->is('pricing') ? 'active' : '' }}">Pricing</a></li>
+                    <li><a href="gallery.html" class="{{ request()->is('gallery') ? 'active' : '' }}">Gallery</a></li>
+                    <li><a href="testimonials.html" class="{{ request()->is('testimonials') ? 'active' : '' }}">Testimonials</a></li>
+                    <li><a href="booking.html" class="{{ request()->is('booking') ? 'active' : '' }}">Booking</a></li>
+                    <li><a href="contact.html" class="{{ request()->is('contact') ? 'active' : '' }}">Contact Us</a></li>
+                    <li><a href="about.html" class="{{ request()->is('about') ? 'active' : '' }}">About Us</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn {{ request()->is('carwash') || request()->is('detailing') || request()->is('waxing') ? 'active' : '' }}">Services</a>
+                        <div class="dropdown-content">
+                            <a href="carwash.html" class="{{ request()->is('carwash') ? 'active' : '' }}">Car Wash</a>
+                            <a href="detailing.html" class="{{ request()->is('detailing') ? 'active' : '' }}">Detailing</a>
+                            <a href="waxing.html" class="{{ request()->is('waxing') ? 'active' : '' }}">Waxing</a>
+                        </div>
+                    </li>
+                    <li><a href="faqs.html" class="{{ request()->is('faqs') ? 'active' : '' }}">FAQs</a></li>
+                    <li><a href="promotions.html" class="{{ request()->is('promotions') ? 'active' : '' }}">Promotions</a></li>
+                    <li><a href="maintenance.html" class="{{ request()->is('maintenance') ? 'active' : '' }}">Maintenance Tips</a></li>
+                    <li><a href="blogs.html" class="{{ request()->is('blogs') ? 'active' : '' }}">Blogs</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    
+
+  <main>
+    <div class="filter-dropdown">
+        <label for="vehicle-filter">Filter by:</label>
+        <select id="vehicle-filter" onchange="filterGallery()">
+          <option value="all">All</option>
+          <option value="motorcycle">Motorcycles Only</option>
+          <option value="car">Cars Only</option>
+        </select>
+      </div>
+      
+      
+      <div class="gallery">
+        <div class="gallery-item car">
+          <div class="image-container">
+            <img src="c4.jpeg" alt="Before Car Wash" class="before-image">
+            <img src="c5.jpeg" alt="After Car Wash" class="after-image">
+          </div>
+          <p>Car Wash: Before and After</p>
+        </div>
+      
+        <div class="gallery-item motorcycle">
+          <div class="image-container">
+            <img src="c6.JPG" alt="Before Motorcycle Wash" class="before-image">
+            <img src="c7.JPG" alt="After Motorcycle Wash" class="after-image">
+          </div>
+          <p>Motorcycle Wash: Before and After</p>
+        </div>
+      
+        
+      </div>
+      
+      
+  
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 CleanJet | Designed by Ken E. Caupit</p>
+    </div>
+  </footer>
+
+  <script>
+    const toggleButton = document.querySelector('.navbar-toggle');
+    const navbarNav = document.querySelector('.navbar-nav');
+    
+    toggleButton.addEventListener('click', () => {
+      navbarNav.classList.toggle('active');
+    });
+  </script>
+  <script>
+    
+    const currentPage = window.location.pathname.split('/').pop();
+    
+    
+    const navLinks = document.querySelectorAll('.navbar-nav a');
+    
+    
+    navLinks.forEach(link => {
+      const linkPath = link.getAttribute('href').split('/').pop();
+      
+      if (linkPath === currentPage) {
+        link.classList.add('active');
+      }
+    });
+
+    function filterGallery() {
+  
+  const filterValue = document.getElementById('vehicle-filter').value;
+  
+  
+  const galleryItems = document.querySelectorAll('.gallery-item');
+
+  
+  galleryItems.forEach(item => {
+    if (filterValue === 'all') {
+      item.style.display = 'block'; 
+    } else if (filterValue === 'motorcycle' && item.classList.contains('motorcycle')) {
+      item.style.display = 'block'; 
+    } else if (filterValue === 'car' && item.classList.contains('car')) {
+      item.style.display = 'block'; 
+    } else {
+      item.style.display = 'none'; 
+    }
+  });
+}
+
+  </script>
+  
+</body>
+</html>

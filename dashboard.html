@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+    }
+
+    .dashboard-header {
+      background-color: #007BFF;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .dashboard-content {
+      padding: 20px;
+    }
+
+    .card {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: #007BFF;
+    }
+
+    .card button {
+      background-color: #007BFF;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .card button:hover {
+      background-color: #0056b3;
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    .table th, .table td {
+      padding: 12px;
+      text-align: left;
+      border: 1px solid #ddd;
+    }
+
+    .table th {
+      background-color: #007BFF;
+      color: white;
+    }
+
+    .table td {
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard-header">
+    <h1>Welcome to CleanJet Admin Dashboard</h1>
+  </div>
+
+  <div class="dashboard-content">
+    
+    <div class="card">
+      <h3>Manage Promotions</h3>
+      <textarea id="promotion-input" rows="5" placeholder="Enter new promotion details..."></textarea><br><br>
+      <button onclick="postPromotion()">Post Promotion</button>
+      <div id="promotions-list"></div>
+    </div>
+
+    
+    <div class="card">
+      <h3>Edit Pricing</h3>
+      <label for="service-pricing">Service Price:</label><br>
+      <input type="text" id="service-pricing" placeholder="Enter price"><br><br>
+      <button onclick="updatePricing()">Update Pricing</button>
+      <p id="pricing-display"></p>
+    </div>
+
+    
+    <div class="card">
+      <h3>View Bookings</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Service</th>
+            <th>Date</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody id="booking-list"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    
+    let promotions = [];
+
+    function postPromotion() {
+      const promotionText = document.getElementById('promotion-input').value;
+      if (promotionText) {
+        promotions.push(promotionText);
+        document.getElementById('promotion-input').value = ''; 
+        displayPromotions();
+      }
+    }
+
+    function displayPromotions() {
+      const promotionsList = document.getElementById('promotions-list');
+      promotionsList.innerHTML = '<h4>Current Promotions:</h4>';
+      promotions.forEach((promotion, index) => {
+        promotionsList.innerHTML += `<p>${index + 1}. ${promotion}</p>`;
+      });
+    }
+
+   
+    function updatePricing() {
+      const newPrice = document.getElementById('service-pricing').value;
+      if (newPrice) {
+        document.getElementById('pricing-display').innerText = `New Service Price: $${newPrice}`;
+        document.getElementById('service-pricing').value = ''; 
+      }
+    }
+
+   
+    const bookings = [
+      { name: 'John Doe', service: 'Car Wash', date: '2025-04-28', details: 'Booked a car wash for 2 PM.' },
+      { name: 'Jane Smith', service: 'Detailing', date: '2025-04-29', details: 'Booked a detailing service for 3 PM.' }
+    ];
+
+    function displayBookings() {
+      const bookingList = document.getElementById('booking-list');
+      bookings.forEach(booking => {
+        bookingList.innerHTML += `
+          <tr>
+            <td>${booking.name}</td>
+            <td>${booking.service}</td>
+            <td>${booking.date}</td>
+            <td>${booking.details}</td>
+          </tr>
+        `;
+      });
+    }
+
+   
+    window.onload = displayBookings;
+  </script>
+</body>
+</html>
